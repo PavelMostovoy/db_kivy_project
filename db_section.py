@@ -2,8 +2,10 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import sessionmaker
-
-engine = create_engine('sqlite:///local_db.db', echo=False)
+from pathlib import Path
+cur_dir = Path(__file__).parent
+path_to_db = cur_dir.joinpath('local_db.db')
+engine = create_engine(f'sqlite:///{path_to_db}', echo=False)
 Base = declarative_base()
 Session = sessionmaker(bind=engine)
 
