@@ -1,0 +1,81 @@
+#:kivy 2.1.0
+
+<MenuScreen>:
+    BoxLayout:
+        Button:
+            text: 'Add New List'
+            on_press: root.manager.current = 'add_list'
+        Button:
+            text: 'View Staff Profile'
+            on_press : root.manager.current  ='view_list'
+        Button:
+            text: 'Salary report'
+
+<AddNewList>:
+    name: str(name_input)
+    date: date
+    plate: plate
+    number: number
+    GridLayout:
+        cols: 2
+        Label:
+            text: 'Name'
+        TextInput:
+            id: name_input
+            multiline: False
+        Label:
+            text: 'Plate'
+        TextInput:
+            id: plate
+        Label:
+            text: 'Date'
+        TextInput:
+            id: date
+        Label:
+            text: 'Number'
+        TextInput:
+            id: number
+        Button:
+            text: 'Back to menu'
+            on_press: root.manager.current = 'menu'
+        Button:
+            text: 'Save'
+            on_press: app.save(name_input.text, plate.text, date.text)
+            on_release:
+                name_input.text = ""
+                date.text = ""
+                plate.text = ""
+                number.text = ""
+
+
+<ViewLists>:
+    name: driver_name
+    plate: plate_number
+    list: list_number
+    data: list_date
+    GridLayout:
+        cols: 2
+        Label:
+            text: 'Driver Name'
+            multiline: False
+        TextInput:
+            id: driver_name
+            multiline: False
+        Label:
+            text: 'Plate Number'
+        TextInput:
+            id: plate_number
+        Label:
+            text: 'List Number'
+        TextInput:
+            id: list_number
+        Label:
+            text: 'Date'
+        TextInput:
+            id: list_date
+        Button:
+            text: 'Back to menu'
+            on_press: root.manager.current = 'menu'
+        Button:
+            text: 'Show'
+            on_press: app.read()
