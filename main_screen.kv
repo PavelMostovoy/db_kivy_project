@@ -7,13 +7,14 @@
             text: 'View Staff Profile'
             on_press : root.manager.current  ='view_list'
         Button:
-            text: 'Salary report'
+            text: 'Data report'
+            on_press : root.manager.current  ='view_report'
 
 <AddNewList>:
-    name: str(name_input)
-    date: date
-    plate: plate
-    number: number
+#    name: str(name_input)
+#    date: date
+#    plate: plate
+#    number: number
     GridLayout:
         cols: 2
         Label:
@@ -47,10 +48,10 @@
 
 
 <ViewLists>:
-    name: driver_name
-    plate: plate_number
-    list: list_number
-    data: list_date
+#    name: driver_name
+#    plate: plate_number
+#    list: list_number
+#    data: list_date
     GridLayout:
         cols: 2
         Label:
@@ -76,4 +77,28 @@
             on_press: root.manager.current = 'menu'
         Button:
             text: 'Show'
-            on_press: app.read()
+            on_press:
+                app.read(driver_name.text, plate_number.text, list_number.text)
+                root.manager.current = 'view_report'
+
+
+<ViewReport>:
+
+    GridLayout:
+        cols: 1
+        Label:
+            text: 'Report'
+            multiline: False
+        TextInput:
+            id: report_data
+            multiline: True
+            text: root.default_txt
+            on_focus:
+                report_data.text = app.last_result()
+
+        Button:
+            text: 'Back to menu'
+            on_press: root.manager.current = 'menu'
+
+
+
