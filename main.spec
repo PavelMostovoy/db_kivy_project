@@ -8,7 +8,7 @@ a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[('main.kv', '.'),('local_db.db', '.'),('test_form.docx', '.')],
+    datas=[('main_screen.kv', '.'),('local_db.db', '.'),('template/test_form.docx', './template')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},

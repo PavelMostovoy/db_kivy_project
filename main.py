@@ -20,7 +20,7 @@ from db_section import add_record
 from os import path
 path_to_data = path.abspath(path.join(path.dirname(__file__)))
 
-Builder.load_file("main.kv")
+Builder.load_file("main_screen.kv")
 
 class MenuScreen(Screen):
     pass
